@@ -8,11 +8,20 @@ class Input extends Component {
             impression: ''
         }
     }
-    handleFirstName = (event) => {
+    handleFirstNameChange = (event) => {
         this.setState({
             user: {
                 firstName: event.target.value,
                 lastName: this.state.user.lastName,
+                impression: this.state.user.impression
+            }
+        })
+    }
+    handleLastNameChange = (event) => {
+        this.setState({
+            user: {
+                firstName: this.state.user.firstName,
+                lastName: event.target.value,
                 impression: this.state.user.impression
             }
         })
@@ -25,7 +34,12 @@ class Input extends Component {
             onChange={this.handleFirstNameChange}
             value={this.state.user.firstName}
         ></input>
-        <p>{this.state.user.firstName}</p>
+        <input
+            placeholder="Last Name"
+            onChange={this.handleLastNameChange}
+            value={this.state.user.lastName}
+        ></input>
+        <p>{this.state.user.firstName} {this.state.user.lastName}</p>
       </>
     );
   }
