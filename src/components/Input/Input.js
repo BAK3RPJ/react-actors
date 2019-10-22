@@ -26,6 +26,25 @@ class Input extends Component {
             }
         })
     }
+    handleImpressionChange = (event) => {
+        this.setState({
+            user: {
+                firstName: this.state.user.firstName,
+                lastName: this.state.user.lastName,
+                impression: event.target.value
+            }
+        })
+    }
+    handleButtonClick = () => {
+        alert(`Thank you ${this.state.user.firstName} for joining us!`);
+        this.setState({
+            user: {
+                firstName: '',
+                lastName: '',
+                impression: ''
+            }
+        })
+    }
   render() {
     return (
       <>
@@ -39,7 +58,16 @@ class Input extends Component {
             onChange={this.handleLastNameChange}
             value={this.state.user.lastName}
         ></input>
-        <p>{this.state.user.firstName} {this.state.user.lastName}</p>
+        <input
+            placeholder="Impression"
+            onChange={this.handleImpressionChange}
+            value={this.state.user.impression}
+        ></input>
+        <button
+            onClick={this.handleButtonClick}
+        >Submit!</button>
+        {this.state.user.firstName && this.state.user.lastName && this.state.user.impression &&
+        <p>{this.state.user.firstName} {this.state.user.lastName}'s best impression is {this.state.user.impression}</p>} 
       </>
     );
   }
